@@ -1,3 +1,21 @@
+// ===== mobile menu toggle =====
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+if(menuToggle && mobileMenu){
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuToggle.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
 // ===== header scroll state =====
 const header = document.getElementById('header');
 function onHeaderScroll(){
